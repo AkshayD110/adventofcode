@@ -19,7 +19,8 @@ func main() {
 	var totalscore int
 	for _, value := range lines {
 		hands := strings.Fields(value)
-		result, handscore := part1(hands[0], hands[1])
+		//call part1 or part2 below as per need
+		result, handscore := part2(hands[0], hands[1])
 		totalscore += (result + handscore)
 	}
 	fmt.Println(totalscore)
@@ -55,6 +56,33 @@ func part1(opponent string, mine string) (int, int) {
 	return -1, -1
 }
 
-func part2() {
+func part2(opponent string, mine string) (int, int) {
+	switch {
+	case mine == "X":
+		if opponent == "A" {
+			return 0, 3
+		} else if opponent == "B" {
+			return 0, 1
+		} else if opponent == "C" {
+			return 0, 2
+		}
+	case mine == "Y":
+		if opponent == "A" {
+			return 3, 1
+		} else if opponent == "B" {
+			return 3, 2
+		} else if opponent == "C" {
+			return 3, 3
+		}
+	case mine == "Z":
+		if opponent == "A" {
+			return 6, 2
+		} else if opponent == "B" {
+			return 6, 3
+		} else if opponent == "C" {
+			return 6, 1
+		}
+	}
 
+	return -1, -1
 }
